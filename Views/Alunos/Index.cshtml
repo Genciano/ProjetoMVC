@@ -1,0 +1,57 @@
+﻿<div class="tex-left">
+    <div>
+        <h1>Dados dos alunos</h1>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Numero</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Idade</th>
+                <th scope="col">Contato</th>
+                <th scope="col">Email</th>
+                <th scope="col">Cep</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Riven</td>
+                <td>24</td>
+                <td>(01) 99223-3265</td>
+                <td>Riven@gmail.com</td>
+                <td>12345-678</td>
+                <td><button type="button" class="btn btn-primary">Endereco</button>
+
+            </tr>
+
+            <tr>
+                <th scope="row">2</th>
+                <td>Viktor</td>
+                <td>1000</td>
+                <td>(02) 99259-6684</td>
+                <td>Viktor@gmail.com</td>
+                <td>87654-321</td>
+                <td><button type="button" class="btn btn-primary">Endereco</button>
+            </tr>
+
+            <tr>
+                <th scope="row">2</th>
+                <td>Matheus</td>
+                <td>20</td>
+                <td>(22) 98115-4850</td>
+                <td>Matheusgenciano@gmail.com</td>
+                <td>88318-630</td>
+                <td><button type="button" class="btn btn-primary">Endereco</button>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+        <a class="btn btn-primary" type="button" asp-controller="Alunos" asp-action="Adicionar">Adicionar Novo Aluno</a>       
+    </div>
+
+</div>
