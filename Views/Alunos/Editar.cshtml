@@ -1,6 +1,8 @@
 ﻿@model AlunoModel
 
-<form asp-controller="Alunos" asp-action="InserirAluno" method="post">
+<form asp-controller="Alunos" asp-action="AlterarAluno" method="post">
+
+    <input type="hidden" asp-for="Id" />
 
     <div class="mb-3">
         <label for="name" class="form-label">Nome</label>
@@ -8,7 +10,7 @@
     </div>
 
     <div class="mb-3">
-        <label for="name" class="form-label">Idade</label>
+        <label for="name" class="form-label">Idade</label> 
         <input type="text" asp-for="Idade" class="form-control col-md-1">
     </div>
 
@@ -28,14 +30,12 @@
     </div>
 
     <div class="tex-center">
-        <a class="btn btn-primary" type="button" asp-controller="Alunos" asp-action="Index">Adicionar</a>
+        <button class="btn btn-primary" type="submit">Alterar</button>
         <a class="btn btn-primary" type="button" asp-controller="Alunos" asp-action="Index">Voltar</a>
     </div>
 
 
 </form>
-
-
 
 
 

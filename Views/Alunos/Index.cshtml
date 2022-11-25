@@ -1,4 +1,15 @@
-﻿<div class="tex-left">
+﻿@if (TempData["MensagemSucesso"] != null)
+{ 
+    <div class="alert alert-success">
+        @TempData["MensagemSucesso"]
+    </div>
+
+}
+
+
+@model List<AlunoModel>
+
+<div class="tex-left">
     <div>
         <h1>Dados dos alunos</h1>
     </div>
@@ -6,7 +17,6 @@
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">Numero</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Idade</th>
                 <th scope="col">Contato</th>
@@ -16,42 +26,36 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Riven</td>
-                <td>24</td>
-                <td>(01) 99223-3265</td>
-                <td>Riven@gmail.com</td>
-                <td>12345-678</td>
-                <td><button type="button" class="btn btn-primary">Endereco</button>
+            @if (Model != null && Model.Any())
+             {
+                foreach (AlunoModel aluno in Model)
+                {
+                    <tr>
+                        <td>@aluno.Nome</td>
+                        <td>@aluno.Idade</td>
+                        <td>@aluno.Contato</td>
+                        <td>@aluno.Email</td>
+                        <td>@aluno.Cep</td>
+                        <td>
+                            <div class="d-grid gap-2 d-md-block">
+                                <a type="submit" class="btn btn-primary" role="button" asp-controller="Alunos" asp-action="BuscarEndereco" asp-route-cep="@aluno.Cep">Endereco</a>
+                                <a type="submit" class="btn btn-primary" role="button" asp-controller="Alunos" asp-action="Editar" asp-route-id="@aluno.Id">Editar</a>
+                                <a type="submit" class="btn btn-primary" role="button" asp-controller="Alunos" asp-action="Excluir" asp-route-id="@aluno.Id">Excluir</a>
+                            </div>
+                        </td>
+                            
 
-            </tr>
-
-            <tr>
-                <th scope="row">2</th>
-                <td>Viktor</td>
-                <td>1000</td>
-                <td>(02) 99259-6684</td>
-                <td>Viktor@gmail.com</td>
-                <td>87654-321</td>
-                <td><button type="button" class="btn btn-primary">Endereco</button>
-            </tr>
-
-            <tr>
-                <th scope="row">2</th>
-                <td>Matheus</td>
-                <td>20</td>
-                <td>(22) 98115-4850</td>
-                <td>Matheusgenciano@gmail.com</td>
-                <td>8000-999</td>
-                <td><button type="button" class="btn btn-primary">Endereco</button>
-            </tr>
+                    </tr>
+                }
+             }
 
         </tbody>
     </table>
 
     <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-        <a class="btn btn-primary" type="button" asp-controller="Alunos" asp-action="Adicionar">Adicionar Novo Aluno</a>       
+        <a class="btn btn-primary" type="button" asp-controller="Alunos" asp-action="Adicionar">Adicionar Novo Aluno</a>
     </div>
 
-</div>
+    </div>
+
+

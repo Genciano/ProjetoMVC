@@ -4,10 +4,14 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using ProjetoMVC.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using ProjetoMVC.Data.Repositório;
+using ProjetoMVC.Data.Repositório.Interface;
 
 namespace ProjetoMVC
 {
@@ -23,7 +27,14 @@ namespace ProjetoMVC
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<JovemProgramadorContexto>((serviceProvider, options) => {
+                options.UseSqlServer(Configuration.GetSection("ConnectionStrings")["StringConexao"].ToString());
+            });
+
+            services.AddScoped<IAlunoRepositorio, AlunoRepositorio>();
+
             services.AddControllersWithViews();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
